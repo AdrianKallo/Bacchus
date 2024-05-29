@@ -1,17 +1,17 @@
 <template>
-    <div>
-      <h1>Ongoing Auctions</h1>
-      <div v-for="auction in filteredAuctions" :key="auction.id">
-        <h2>{{ auction.title }}</h2>
-        <p>Description: {{ auction.description }}</p>
-        <p>Remaining Time: {{ calculateRemainingTime(auction.biddingEndDate) }}</p>
-        <p v-if="isAuctionOpen(auction.biddingEndDate)">Make Offer:</p>
-        <input v-if="isAuctionOpen(auction.biddingEndDate)" type="number" v-model="offerAmount" placeholder="Enter offer amount">
-        <button v-if="isAuctionOpen(auction.biddingEndDate)" @click="makeOffer(auction.id, auction.productId)">Submit Offer</button>
-      </div>
+  <div>
+    <h1>Ongoing Auctions</h1>
+    <div v-for="auction in filteredAuctions" :key="auction.id">
+      <h2>{{ auction.title }}</h2>
+      <p>Description: {{ auction.description }}</p>
+      <p>Remaining Time: {{ calculateRemainingTime(auction.biddingEndDate) }}</p>
+      <p v-if="isAuctionOpen(auction.biddingEndDate)">Make Offer:</p>
+      <input v-if="isAuctionOpen(auction.biddingEndDate)" type="number" v-model="offerAmount" placeholder="Enter offer amount">
+      <button v-if="isAuctionOpen(auction.biddingEndDate)" @click="makeOffer(auction.id, auction.productId)">Submit Offer</button>
     </div>
-  </template>
-  
+  </div>
+</template>
+
   <script>
   import axios from 'axios';
   
